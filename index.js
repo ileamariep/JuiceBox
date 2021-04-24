@@ -7,9 +7,6 @@ const express = require("express");
 const server = express();
 
 const { client } = require("./db");
-
-
-
 client.connect();
 
 const bodyParser = require("body-parser");
