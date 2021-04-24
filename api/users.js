@@ -11,7 +11,7 @@ const { getAllUsers, getUserByUsername, createUser } = require('../db');
 // });
 
 
-usersRouter.get('/', async (req, res) => {
+usersRouter.get('/', async (req, res, next) => {
   try {
     const users = await getAllUsers();
     res.send({

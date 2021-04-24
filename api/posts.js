@@ -69,8 +69,8 @@ postsRouter.patch('/:postId', requireUser, async (req, res, next) => {
   }
 });
 
-postsRouter.get('/', async (req, res, next) => {
-//added next in parameter
+postsRouter.get('/', async (req, res ) => {
+
 
   try {
     const allPosts = await getAllPosts();
