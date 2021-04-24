@@ -12,10 +12,16 @@ usersRouter.use((req, res, next) => {
 
 
 usersRouter.get('/', async (req, res) => {
-  const users = await getAllUsers();
-  res.send({
-    users,
-  });
+  try {
+    const users = await getAllUsers();
+    res.send({
+      users,
+    });
+  } catch ({ name, message }) {
+    next({ name, message });
+  }
+  
+ 
 });
 
 usersRouter.post('/register', async (req, res, next) => {
