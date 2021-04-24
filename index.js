@@ -7,6 +7,7 @@ const express = require("express");
 const server = express();
 
 const { client } = require("./db");
+
 const client = new Client({
   connectionString: process.env.DATABASE_URL || 'postgres://localhost:5432/juicebox-dev',
   ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : undefined,
