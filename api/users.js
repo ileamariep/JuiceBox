@@ -4,11 +4,11 @@ const jwt = require('jsonwebtoken');
 const { getAllUsers, getUserByUsername, createUser } = require('../db');
 
 
-usersRouter.use((req, res, next) => {
-  console.log("A request is being made to /users");
+// usersRouter.use((req, res, next) => {
+//   console.log("A request is being made to /users");
 
-  next();
-});
+//   next();
+// });
 
 
 usersRouter.get('/', async (req, res) => {
