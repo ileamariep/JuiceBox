@@ -2,7 +2,6 @@ const { Client } = require("pg"); // imports the pg module
 
 const client = new Client("postgres://localhost:5432/juicebox-dev");
 
-
 async function createUser({ username, password, name, location }) {
   try {
     const { rows: [user], } = await client.query(
@@ -96,6 +95,7 @@ async function getUserById(userId) {
 
 async function createPost({ authorId, title, content, tags = [] }) {
   try {
+    
     const { rows: [post], } = await client.query(
       `
       INSERT INTO posts("authorId", title, content) 
@@ -265,6 +265,13 @@ async function getPostById(postId) {
     `,
       [postId]
     );
+
+    if (!post) {
+      throw {
+        name: "PostNotFoundError",
+        message: "Could not find a post with that postId"
+      };
+    }
 
     const { rows: tags } = await client.query(
       `
